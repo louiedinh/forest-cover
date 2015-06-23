@@ -1,0 +1,33 @@
+---
+title: "EDA"
+author: "Louie Dinh"
+date: "June 23, 2015"
+output: html_document
+---
+
+Dependencies
+```{r}
+library(ggplot2)
+library(dplyr)
+```
+
+Load data and clean.
+```{r}
+train_raw <- read.csv("train.csv")
+test_raw <- read.csv("test.csv")
+
+train <- clean(train_raw)
+test <- clean(test_raw, is_test=TRUE)
+```
+
+Initial Plots
+
+```{r, echo=FALSE}
+table(train$Cover_Type)
+
+ggplot(train, aes(Cover_Type, Elevation)) + geom_boxplot()
+```
+
+* Cover type 7 likes higher elavation. Clearly 
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
